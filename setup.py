@@ -11,8 +11,16 @@ except:
 setup(
     name='vedo',
     version=verstr,
-    packages=['vedo'],
-    scripts=['bin/vedo', 'bin/vedo-convert'],
+    packages=['vedo', 'vedo.bin'],
+    # https://packaging.python.org/guides/distributing-packages-using-setuptools/#console-scripts
+    # Strictly speaking, setuptools expects a function to call but these scripts are just scripts
+    # to be executed directly. Give setuptools a _dummy() method to call to keep it happy.
+    entry_points={
+        'console_scripts': [
+            'vedo=vedo.bin.vedo:_dummy',
+            'vedo-convert=vedo.bin.vedo_convert:_dummy',
+        ],
+    },
     install_requires=['vtk', 'numpy'],
     description='''A python module for scientific visualization,
     analysis and animation of 3D objects and point clouds based on VTK.''',

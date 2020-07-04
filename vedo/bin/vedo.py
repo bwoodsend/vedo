@@ -732,3 +732,8 @@ else:  #########################################################################
 
     else:
         draw_scene()
+
+# Null function for setuptools to call.
+# See setup.py for why this is needed.
+_dummy = lambda : None
+

@@ -48,3 +48,8 @@ for f in args.files:
 
     newf = f.replace("."+source_ext,"")+"."+target_ext
     write(a, newf, binary=args.binary)
+
+# Null function for setuptools to call.
+# See setup.py for why this is needed.
+_dummy = lambda : None
+
